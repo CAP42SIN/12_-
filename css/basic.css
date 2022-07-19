@@ -78,7 +78,7 @@ header h1 a {
     padding-right: 2vw;
 }
 
-.gnb_list > li {
+.gnb_list>li {
     display: table-cell;
     height: 100%;
     padding: 0 37px;
@@ -109,7 +109,7 @@ header h1 a {
     padding: 20px 0
 }
 
-.subItem_list > li {
+.subItem_list>li {
     margin-bottom: 10px;
 }
 
@@ -133,7 +133,7 @@ header h1 a {
 
 
 /*pc상태 메인메뉴 hover*/
-.gnb_list > li:hover .subItem_w {
+.gnb_list>li:hover .subItem_w {
     display: block;
 }
 
@@ -173,7 +173,8 @@ a.btn_total {
     padding-left: 50%;
 }
 
-.btn_total:before, .btn_total:after {
+.btn_total:before,
+.btn_total:after {
     position: absolute;
     content: "";
     width: 27%;
@@ -183,6 +184,13 @@ a.btn_total {
     background: #111;
 }
 
+.btn_total:before {
+    transform: translateY(-5px);
+}
+
+.btn_total:after {
+    transform: translateY(5px);
+}
 
 .btn_total_in {
     font-size: 16px;
@@ -191,16 +199,16 @@ a.btn_total {
 }
 
 
-
 /***********   total_menu_z   ************/
 .total_menu_z {
+    height: 0;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 101;
     overflow: hidden;
-    transition: 1s;
+    transition: 1s
 }
 
 .total_menuZ_in {
@@ -236,7 +244,7 @@ ul.total_list {
     border: 5px solid yellow;
 }
 
-.total_list > li {
+.total_list>li {
     display: table-cell;
     position: absolute;
     top: 35%;
@@ -276,7 +284,7 @@ a.totalMitem {
 
 ul.totalSubItem_list {}
 
-.totalSubItem_list > li {
+.totalSubItem_list>li {
     margin-bottom: 15px;
 }
 
@@ -297,23 +305,24 @@ a.totalSubItem {
     left: 20%;
     width: 60%;
     border: 2px solid coral;
-    color: #86a1a8;
+    color: #86a1a8
 }
 
 .totalAddress_w h2 {
     font-size: 0.8vw;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .totalAddress_list {
     display: table;
 }
 
-.totalAddress_list > li {
+.totalAddress_list>li {
     display: table-cell;
     font-size: 0.67vw;
     padding-right: 70px;
     line-height: 2;
+    font-weight: 300;
 }
 
 .totalClose_w {
@@ -322,6 +331,7 @@ a.totalSubItem {
     right: 0;
     height: 4.2vw;
     width: 11%;
+    min-height: 80px;
 }
 
 a.btn_totalClose {
@@ -333,7 +343,8 @@ a.btn_totalClose {
     padding-left: 50%;
 }
 
-a.btn_totalClose::before, a.btn_totalClose::after {
+a.btn_totalClose:before,
+a.btn_totalClose:after {
     position: absolute;
     content: "";
     width: 1px;
@@ -341,26 +352,25 @@ a.btn_totalClose::before, a.btn_totalClose::after {
     left: 28%;
     top: 50%;
     margin-top: -16px;
-    background: white;
+    background: #fff;
 }
 
-a.btn_totalClose::before {
+a.btn_totalClose:before {
     transform: rotate(45deg);
 }
 
-a.btn_totalClose::after {
+a.btn_totalClose:after {
     transform: rotate(-45deg);
 }
 
 .btn_totalClose_in {
     font-size: 16px;
-    font-family: 'Merriwrather', serif;
-    color: white;
+    font-family: 'Merriweather', serif;
+    color: #fff;
 }
 
-.address {}
 
-.tel {}
+
 
 
 
@@ -368,7 +378,9 @@ a.btn_totalClose::after {
 
 
 /**************  #fullpage **************/
-#fullpage {}
+#fullpage {
+    overflow-x: hidden;
+}
 
 #s1 {
     position: relative;
@@ -386,8 +398,9 @@ a.btn_totalClose::after {
     background-size: 100% 100%;
     background-color: black;
     /* in case the video doesn't fit the whole page*/
-    background-image: 
-        /* our video */ ;
+    background-image:
+        /* our video */
+    ;
     background-position: center center;
     background-size: contain;
     object-fit: cover;
@@ -409,6 +422,9 @@ a.btn_totalClose::after {
     font-family: 'Merriweather', serif;
     line-height: 1.25;
     letter-spacing: -1.8px;
+    transform: translateX(250px);
+    opacity: 0;
+    transition-duration: 1.5s;
 }
 
 .s1_w span {
@@ -419,6 +435,20 @@ a.btn_totalClose::after {
 .s1_sub {
     font-size: 1.5vw;
     margin-top: 15px;
+    transform: translateX(150px);
+    opacity: 0;
+    transition-duration: 1.1s;
+    transition-delay: 1s;
+}
+
+#s1.active .s1_main {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+#s1.active .s1_sub {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .s1_sns {
@@ -464,6 +494,7 @@ a.btn_totalClose::after {
     position: relative;
     background: #EBE7E4;
     min-height: 475px;
+    overflow: hidden;
 }
 
 .s2_bg {
@@ -483,6 +514,15 @@ a.btn_totalClose::after {
     width: 25%;
     display: flex;
     align-items: center;
+    transform: scale(0.5);
+    opacity: 0;
+    transition-duration: 1.3s;
+    transition-delay: 0.8s;
+}
+
+#s2.active .s2_img {
+    transform: scale(1);
+    opacity: 1;
 }
 
 .s2_w {
@@ -501,6 +541,9 @@ a.btn_totalClose::after {
 
 .s2_title {
     max-width: 45%;
+    transform: translateX(200px);
+    opacity: 0;
+    transition-duration: 1s;
 }
 
 .s2_title_sub {
@@ -508,10 +551,32 @@ a.btn_totalClose::after {
     color: #3c4940;
     font-weight: 700;
     margin-top: 26px;
+    transform: translateX(150px);
+    opacity: 0;
+    transition-duration: 1s;
+    transition-delay: 0.3s;
+}
+
+#s2.active .s2_title {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+#s2.active .s2_title_sub {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .s2_cont {
     margin-top: 70px;
+    transform: translateY(150px);
+    opacity: 0;
+    transition-duration: 1s;
+    transition-delay: 0.6s;
+}
+
+.s2_cont:last-child {
+    transition-delay: 0.5s;
 }
 
 .s2_item_title {
@@ -530,10 +595,15 @@ a.btn_totalClose::after {
     text-align: left;
 }
 
-.s2_list > li {
+.s2_list>li {
     display: table-cell;
     padding-right: 70px;
     vertical-align: top;
+}
+
+#s2.active .s2_cont {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .s2_item {
@@ -545,7 +615,7 @@ a.btn_totalClose::after {
     content: '';
     width: 90px;
     height: 90px;
-    background: url('../img/mc_eff_m.png') no-repeat 0 0 / cover;
+    background: url('../images/mc_eff_m.png') no-repeat 0 0 / cover;
 }
 
 .s2_item p {
@@ -593,7 +663,7 @@ a.btn_totalClose::after {
     right: 0;
     height: 54px;
     width: 54px;
-    background: #D5D5D5 url('../img/linkgo_allow.png') no-repeat 50% 50%;
+    background: #D5D5D5 url('../images/linkgo_allow.png') no-repeat 50% 50%;
     border-radius: 50%;
 }
 
@@ -602,7 +672,7 @@ a.btn_totalClose::after {
 
 #s3 {
     position: relative;
-    background: url('../img/mc_geda_bg_pc.png') no-repeat 50% 50% / cover;
+    background: url('../images/mc_geda_bg_pc.png') no-repeat 50% 50% / cover;
     z-index: 3;
 }
 
@@ -614,6 +684,9 @@ a.btn_totalClose::after {
 .s3_title {
     font-size: 1.7vw;
     font-weight: 700;
+    transform: translateX(150px);
+    opacity: 0;
+    transition-duration: 1s;
 }
 
 .s3_main {
@@ -623,9 +696,28 @@ a.btn_totalClose::after {
     line-height: 1.25;
     letter-spacing: -1.8px;
     margin-top: 30px;
+    transform: translateX(250px);
+    opacity: 0;
+    transition-duration: 1.5s;
+    transition-delay: 0.6s;
 }
 
-.s3_sub_w {}
+#s3.active .s3_title {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+#s3.active .s3_main {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.s3_sub_w {
+    transform: translateY(100px);
+    opacity: 0;
+    transition-duration: 1s;
+    transition-delay: 0.8s;
+}
 
 .s3_sub {
     margin-top: 40px;
@@ -645,6 +737,20 @@ a.btn_totalClose::after {
 
 .s3_btn_w {
     margin-top: 100px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition-duration: 1s;
+    transition-delay: 1.3s;
+}
+
+#s3.active .s3_sub_w {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+#s3.active .s3_btn_w {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 a.s3_btn {
@@ -686,3 +792,60 @@ a.s3_btn {
     transform: rotate(45deg) translateY(calc(-50% - 1px));
     right: 4px;
 }
+
+
+#s5 {
+    background: #65d8f8
+}
+
+.s4_w,
+.s5_w {
+    margin: 100px 12vw;
+}
+
+.s4_title,
+.s5_title {
+    font-size: 1.7vw;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.arrow {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 20;
+    border: 5px solid red;
+}
+
+.prevA,
+.nextA {
+    display: block;
+    font-size: 14px;
+    font-family: 'Merriweather', serif;
+    color: #dbdbdb;
+}
+
+.prevA {
+    transform: rotate(90deg);
+}
+
+.nextA {
+    transform: rotate(-90deg) translateY(30px);
+}
+
+.prevA::before,
+.nextA::before {
+    display: inline-block;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #dbdbdb;
+    transform: rotate(-45deg);
+    margin-right: 5px;
+}
+
+.prevA::before {}
+
+.nextA::before {}
